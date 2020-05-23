@@ -10,16 +10,16 @@ import java.util.Map;
 import java.util.Set;
 
 /*
-    用户登录模块
+    用户注册模块
  */
 
-@WebServlet("/loginServlet")
-public class loginServlet extends HttpServlet {
+@WebServlet("/registerServlet")
+public class registerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, String[]> map = request.getParameterMap();
-        Set<String> keySet = map.keySet();
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        Set<String> keySet = parameterMap.keySet();
         for (String name : keySet) {
-            String[] values = map.get(name);
+            String[] values = parameterMap.get(name);
             for (String value : values) {
                 System.out.println(name + "：" + value);
             }

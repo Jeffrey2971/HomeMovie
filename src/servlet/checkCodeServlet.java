@@ -11,6 +11,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
+/*
+    验证码模块
+ */
+
 @WebServlet("/checkCodeServlet")
 public class checkCodeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: jeffrey
+  Date: 2020/5/24
+  Time: 上午1:45
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>注册页面</title>
@@ -220,7 +227,6 @@
 
 </head>
 <body>
-
 <div class="rg_layout">
     <div class="rg_left">
         <p>新用户注册</p>
@@ -231,7 +237,7 @@
     <div class="rg_center">
         <div class="rg_form">
             <!--定义表单 form-->
-            <form action="#" method="get" id="form">
+            <form action="/video/registerServlet" method="post" id="form">
                 <table>
                     <tr>
                         <td class="td_left"><label for="username">用户名</label></td>
@@ -310,7 +316,6 @@
 
 
 </div>
-
 
 </body>
 </html>

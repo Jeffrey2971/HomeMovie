@@ -12,8 +12,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet("/servlet.watchServlet")
-public class watchServlet extends HttpServlet {
+/*
+    用户下载模块
+ */
+
+@WebServlet("/downloadServlet")
+public class downloadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 获取请求参数，文件名称
         Date date = new Date();
