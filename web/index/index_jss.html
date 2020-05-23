@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>寄生兽中文版 观看/下载</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        table {
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+
+        }
+
+        td, th {
+            text-align: center;
+            border: 1px solid;
+        }
+
+        div {
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<h1>寄生兽中文版 观看/下载</h1>
+<hr>
+
+
+<h2>下载</h2>
+
+<script>
+    var x = 1;
+    document.write("<table>")
+    for (var i = 0; i < 5; i++) {
+        document.write("<tr>")
+        for (var j = 0; j < 5; j++) {
+            document.write("<td>")
+            document.write("<a href='/video/servlet/watchServlet?filename=" + x + ".mp4&data=jss'>第" + x + "级</a>")
+            x++;
+            if (x === 25) {
+                document.write("<td>完结</td>")
+                break
+            }
+            document.write("</td>")
+        }
+        document.write("</tr>")
+    }
+    document.write("</table>")
+</script>
+<hr>
+<h2>在线观看</h2>
+
+<script>
+    var x = 1;
+    document.write("<table>")
+    for (var i = 0; i < 5; i++) {
+        document.write("<tr>")
+        for (var j = 0; j < 5; j++) {
+            document.write("<td>")
+            document.write("<a href='/video/video/jss/" + x + ".mp4'>第" + x + "级</a>")
+            x++;
+            if (x === 25) {
+                document.write("<td>完结</td>")
+                break
+            }
+            document.write("</td>")
+        }
+        document.write("</tr>")
+    }
+    document.write("</table>")
+</script>
+</body>
+</html>
