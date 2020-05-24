@@ -137,6 +137,7 @@
             // 给对应的方法添加焦点事件
             document.getElementById("username").onblur = checkUsername;
             document.getElementById("password").onblur = checkPassword;
+            document.getElementById("password").onblur = checkPassword;
             document.getElementById("tel").onblur = checkTel;
             document.getElementById("email").onblur = checkEmail;
             document.getElementById("name").onblur = checkName;
