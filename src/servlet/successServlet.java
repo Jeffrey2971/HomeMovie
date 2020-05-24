@@ -12,9 +12,10 @@ import java.io.IOException;
 @WebServlet("/successServlet")
 public class successServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
-        User user = (User) request.getAttribute("user");
-        response.getWriter().write("登陆成功，" + user.getUsername() + "，欢迎您！");
+        response.sendRedirect("/video/success.jsp");
+//        response.setContentType("text/html;charset=utf-8");
+//        User user = (User) request.getAttribute("user");
+//        response.getWriter().write("登陆成功，" + user.getUsername() + "，欢迎您。");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

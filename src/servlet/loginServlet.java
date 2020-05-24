@@ -17,12 +17,12 @@ import java.io.IOException;
 @WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 设置编码
-        req.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         // 获取请求参数
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         // 封装user对象
         User LoginUser = new User();
         LoginUser.setUsername(username);
@@ -33,14 +33,15 @@ public class loginServlet extends HttpServlet {
         // 判断user
         if (user == null) {
             // 登录失败
-            req.getRequestDispatcher("/failServlet").forward(req, resp);
+            request.getRequestDispatcher("/failServlet").forward(request, response);
         } else {
             // 登陆成功
             // 存储数据
-            req.setAttribute("user", user);
+//            request.setAttribute("user", user);
+            request.getSession().setAttribute("user", user);
             // 转发
 
-            req.getRequestDispatcher("/successServlet").forward(req, resp);
+            request.getRequestDispatcher("/successServlet").forward(request, response);
         }
     }
 
