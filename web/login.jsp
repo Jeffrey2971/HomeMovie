@@ -11,18 +11,19 @@
     <title>用户登录</title>
 </head>
 <body>
+
 <form action="/video/loginServlet" method="post">
     <table>
         <tr>
             <td>用户名</td>
-            <td><input type="text" placeholder="请输入用户名"></td>
+            <td><input type="text" placeholder="请输入用户名" name="username"></td>
         </tr>
         <tr>
             <td>请输入密码</td>
-            <td><input type="password" placeholder="请输入密码"></td>
+            <td><input type="password" placeholder="请输入密码" name="password"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit">登录</td>
+            <td colspan="2"><input type="submit"></td>
         </tr>
     </table>
 

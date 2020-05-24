@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/successServlet")
 public class successServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("html/text;charset=utf-8");
+        response.setContentType("text/html;charset=utf-8");
         User user = (User) request.getAttribute("user");
         response.getWriter().write("登陆成功，" + user.getUsername() + "，欢迎您！");
     }

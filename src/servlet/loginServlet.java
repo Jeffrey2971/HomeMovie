@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
 /*
     用户登录模块
@@ -18,29 +16,36 @@ import java.util.Set;
 
 @WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 设置编码
+        req.setCharacterEncoding("utf-8");
+        // 获取请求参数
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        // 封装user对象
         User LoginUser = new User();
         LoginUser.setUsername(username);
         LoginUser.setPassword(password);
-
+        // 调用UserDao的login方法
         UserDao dao = new UserDao();
         User user = dao.login(LoginUser);
+        // 判断user
+        if (user == null) {
+            // 登录失败
+            req.getRequestDispatcher("/failServlet").forward(req, resp);
+        } else {
+            // 登陆成功
+            // 存储数据
+            req.setAttribute("user", user);
+            // 转发
 
-        if (user == null){
-            request.getRequestDispatcher("/failServlet").forward(request, response);
-        }else{
-            request.setAttribute("user", user);
-            request.getRequestDispatcher("/successServlet").forward(request, response);
+            req.getRequestDispatcher("/successServlet").forward(req, resp);
         }
-
-
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request, response);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req, resp);
     }
 }
