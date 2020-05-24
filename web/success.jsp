@@ -9,6 +9,14 @@
 <html>
 <head>
     <title>登陆成功</title>
+    <style>
+        span{
+            color: red;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
     <script>
         window.onload = function () {
             sec = 5;
@@ -38,11 +46,10 @@
     }else{
         username = "null";
     }
-
 %>
 
 
-<p>登陆成功，<%=username%>，欢迎您<span id="time">5</span>，将在秒之后，自动跳转到首页</p>
+<p>登陆成功，<%=username%>，欢迎您，将在<span id="time">5</span>，秒之后，自动跳转到首页</p>
 
 </body>
 </html>
