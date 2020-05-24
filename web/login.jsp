@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="/video/loginServlet" method="post">
+<form action="${pageContext.request.contextPath}/loginServlet" method="post">
     <table>
         <tr>
             <td>用户名</td>
