@@ -7,28 +7,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
-/*
-    用户注册模块
- */
-
-@WebServlet("/registerServlet")
-public class registerServlet extends HttpServlet {
+@WebServlet("/successServlet")
+public class successServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String checkcode = request.getParameter("checkcode");
-        HttpSession session = request.getSession();
-        Object checkCode_session = session.getAttribute("checkCode_session");
-        session.removeAttribute("checkCode_session");
-    
-        if(checkCode_session != null && checkCode_session.equals(checkcode)){
-            User user = new User();
-
-        }
-        
+        response.setContentType("html/text;charset=utf-8");
+        User user = (User) request.getAttribute("user");
+        response.getWriter().write("登陆成功，" + user.getUsername() + "，欢迎您！");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

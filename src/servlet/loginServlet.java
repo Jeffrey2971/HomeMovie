@@ -1,5 +1,8 @@
 package servlet;
 
+import dao.UserDao;
+import domain.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,14 +19,25 @@ import java.util.Set;
 @WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, String[]> map = request.getParameterMap();
-        Set<String> keySet = map.keySet();
-        for (String name : keySet) {
-            String[] values = map.get(name);
-            for (String value : values) {
-                System.out.println(name + "：" + value);
-            }
+        request.setCharacterEncoding("utf-8");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        User LoginUser = new User();
+        LoginUser.setUsername(username);
+        LoginUser.setPassword(password);
+
+        UserDao dao = new UserDao();
+        User user = dao.login(LoginUser);
+
+        if (user == null){
+            request.getRequestDispatcher("/failServlet").forward(request, response);
+        }else{
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("/successServlet").forward(request, response);
         }
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

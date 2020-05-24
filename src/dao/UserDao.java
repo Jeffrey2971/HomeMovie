@@ -4,10 +4,11 @@ package dao;
     用于操作数据库中User表的类
  */
 
-import domain.User;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import domain.User;
 import util.JDBCUtils;
 
 public class UserDao {

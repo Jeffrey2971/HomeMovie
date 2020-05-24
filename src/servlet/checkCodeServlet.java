@@ -20,8 +20,8 @@ public class checkCodeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // 创建一个对象，在内存中图片(验证码图片对象)
-        int width = 100;
-        int height = 50;
+        int width = 150;
+        int height = 40;
 
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
@@ -37,7 +37,7 @@ public class checkCodeServlet extends HttpServlet {
         String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         // 生成随机角标
         Random ran = new Random();
-
+        StringBuilder sb = new StringBuilder();
 
         // 写验证码
         for (int i = 1; i <= 4; i++) {
@@ -45,10 +45,12 @@ public class checkCodeServlet extends HttpServlet {
             // 获取字符
             char ch = str.charAt(index); // 随机字符
             g.drawString(ch + "", width / 5 * i, height / 2);
-
+            sb.append(ch);
         }
+        request.getSession().setAttribute("checkCode_session", sb.toString());
 
-            // 画干扰线
+
+        // 画干扰线
         g.setColor(Color.GREEN);
             // 随机生成坐标点
         for (int i = 0; i < 20; i++) {

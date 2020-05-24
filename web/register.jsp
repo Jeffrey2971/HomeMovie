@@ -89,9 +89,7 @@
             padding-left: 10px;
         }
 
-        #checkcode {
-            width: 110px;
-        }
+
 
         #img_check {
             height: 32px;
@@ -131,16 +129,17 @@
                 // 调用用户名校验方法 checkUsername();
                 // 调用密码校验方法 checkPassword();
                 // return checkUsername() && checkPassword();
-                return checkUsername() && checkPassword() && checkTel() && checkEmail() && checkName();
+                return checkUsername() && checkPassword() && checkTel() && checkEmail() && checkName() && checkCode();
             }
 
             // 给对应的方法添加焦点事件
             document.getElementById("username").onblur = checkUsername;
             document.getElementById("password").onblur = checkPassword;
-            document.getElementById("password").onblur = checkPassword;
             document.getElementById("tel").onblur = checkTel;
             document.getElementById("email").onblur = checkEmail;
             document.getElementById("name").onblur = checkName;
+            document.getElementById("checkcode").onblur = checkCode;
+
 
 
             // 校验用户名
@@ -220,8 +219,27 @@
 
             }
 
+            function checkCode() {
+                var code = document.getElementById("checkcode").value;
+                var s_code = document.getElementById("s_code");
+                if(code == ""){
+                    s_code.innerHTML = "验证码不能为空"
+                    return false;
+                }else if(code.length < 2 || code.length > 8){
+                    s_code.innerHTML = "姓名格式有误";
+                    return false
+                }else{
+                    s_code.innerHTML = "<img src='img/gou.png' width='35' height='25'>";
+                    return true
+                }
 
 
+            }
+
+            document.getElementById("img_check").onclick = function () {
+                this.src = "/video/checkCodeServlet?time=" + new Date().getTime();
+
+            }
 
         }
     </script>
@@ -297,7 +315,13 @@
                         </td>
                     </tr>
 
-
+                    <tr>
+                        <td class="td_left"><label for="checkcode">验证码</label></td>
+                        <td class="td_right"><input type="text" name="checkcode" id="checkcode" placeholder="请输入验证码">
+                            <span id="s_code" class="error"></span>
+                            <img id="img_check" src="/video/checkCodeServlet">
+                        </td>
+                    </tr>
 
                     <tr>
                         <td colspan="2" id="td_sub"><input type="submit" id="btn_sub" value="注册"></td>
@@ -312,7 +336,7 @@
     </div>
 
     <div class="rg_right">
-        <p>已有账号?<a href="#">立即登录</a></p>
+        <p>已有账号?<a href="/video/login.jsp">立即登录</a></p>
     </div>
 
 
